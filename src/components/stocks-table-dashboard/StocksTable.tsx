@@ -14,19 +14,22 @@ import CloseIcon from "@mui/icons-material/Close";
 import TablePagination from "./TablePagination";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
+import { useNavigate } from "react-router-dom";
 
 interface StocksTableType {
   exploreOn: boolean;
+  setCurrentStock: React.Dispatch<React.SetStateAction<any>>;
 }
 
-export default function StocksTable({ exploreOn }: StocksTableType) {
+export default function StocksTable({ exploreOn, setCurrentStock }: StocksTableType) {
+  const navigate = useNavigate();
   const stocks = useAppSelector((state: any) => state.stocks.stocks);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [watchlist, setWatchList] = useState<any>([]);
   const [hoveredStock, setHoveredStock] = useState<any>(null);
 
   // pagination
-  const rowsPerPage = 5;
+  const rowsPerPage = 7;
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
 
@@ -72,6 +75,10 @@ export default function StocksTable({ exploreOn }: StocksTableType) {
     console.log("Updated Watchlist: ", watchlist);
   }, [watchlist]);
 
+  const handleViewStockDetail = (stock: any) => {
+    navigate(`/dashboard/${stock.stock_name}`);
+  };
+
   return (
     <TableContainer component={Paper} id="stocks-table">
       {stocks.length !== 0 ? (
@@ -95,10 +102,18 @@ export default function StocksTable({ exploreOn }: StocksTableType) {
                     key={stock.stock_name}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
-                    <TableCell component="th" scope="row">
+                    <TableCell
+                      component="th"
+                      scope="row"
+                      onClick={() => {
+                        setCurrentStock(stock);
+                        handleViewStockDetail(stock);
+                      }}
+                      id="table-cell-name"
+                    >
                       {stock.stock_name}
                     </TableCell>
-                    <TableCell align="right">{stock.base_price}</TableCell>
+                    <TableCell align="right" id="table-cell-price">{stock.base_price}</TableCell>
                     <TableCell align="right">
                       {watchlist.find(
                         (findStock: any) => findStock === stock
@@ -146,7 +161,7 @@ export default function StocksTable({ exploreOn }: StocksTableType) {
                 ))}
               {!exploreOn &&
                 (watchlist.length === 0 ? (
-                  <div style={{ margin: "1rem"}}>
+                  <div style={{ margin: "1rem", color: "rgba(0, 0, 0, 0.3)" }}>
                     Stocks added from Explore section will appear here.
                   </div>
                 ) : (

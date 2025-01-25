@@ -1,9 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Dashboard.scss";
 import StocksTable from "./stocks-table-dashboard/StocksTable";
+import { useAppDispatch } from "../store/hook";
+import { fetchStocks } from "../store/slices/stockSlice";
 
-export default function Dashboard() {
+interface DashboardType {
+  setCurrentStock: React.Dispatch<React.SetStateAction<any>>;
+}
+
+export default function Dashboard({ setCurrentStock }: DashboardType) {
   const [exploreOn, setExploreOn] = useState<boolean>(true);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchStocks());
+  }, [dispatch]);
 
   return (
     <div>
@@ -30,7 +41,7 @@ export default function Dashboard() {
         MY WATCHLIST
       </button>
       <div id="table-container">
-        <StocksTable exploreOn={exploreOn} />
+        <StocksTable exploreOn={exploreOn} setCurrentStock={setCurrentStock} />
       </div>
     </div>
   );

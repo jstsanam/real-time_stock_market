@@ -1,0 +1,28 @@
+.history-box {
+  padding: 0.8rem;
+
+  .history-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .history-stocks {
+    height: 16rem;
+    overflow: auto;
+
+    .history-stock {
+      border: 1px solid #000;
+      border-radius: 1rem;
+      padding: 0.5rem;
+      margin-bottom: 0.8rem;
+      margin-right: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
+
+.stock-timestamp {
+    font-size: 0.8rem;
+}

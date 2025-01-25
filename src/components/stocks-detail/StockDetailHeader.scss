@@ -1,0 +1,67 @@
+.stock-detail-header {
+  display: flex;
+  gap: 0.6rem;
+
+  .stocks-select {
+    width: 20rem;
+    border: 1px solid #000;
+  }
+
+  .stock-price {
+    width: 20rem;
+    border: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 1.2rem;
+
+    .stock-change-percentage {
+      font-size: 0.8rem;
+      margin-top: 0.3rem;
+    }
+  }
+
+  .stock_quantity {
+    width: 16.1rem;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+
+  .buy-button, .sell-button {
+    width: 6rem;
+    text-align: center;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .buy-button {
+    color: #2f9e44;
+    background-color: #b2f2bb;
+    border: 1px solid #2f9e44;
+  }
+
+  .sell-button {
+    color: #e03131;
+    background-color: #ffc9c9;
+    border: 1px solid #e03131;
+  }
+}
+
+#current-stock {
+  display: flex;
+  align-items: center;
+}
+
+.MuiPopover-paper {
+  height: 15rem !important;
+}
+
+.stock-logo {
+  border: 1px solid #f08c00;
+  color: #f08c00;
+  background-color: #ffec99;
+  padding: 0.2rem;
+  margin-right: 0.5rem;
+}

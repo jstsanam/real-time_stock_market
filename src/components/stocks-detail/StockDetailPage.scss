@@ -1,0 +1,45 @@
+.stock-detail-page {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.6rem;
+    margin-top: 0.6rem;
+
+    .stock-graph {
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .history-notification-box {
+        width: 25%;
+        
+        .history, .notification {
+            border: 1px solid #000;
+        }
+
+        .history {
+            margin-bottom: 0.6rem;
+            height: 20rem;
+        }
+
+        .notification {
+            height: 17.75rem;
+        }
+    }
+}
+
+.back-button {
+    border: none;
+    background-color: transparent;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: #468ccd;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+        text-decoration-color: #468ccd;
+        text-decoration-thickness: 0.1rem;
+    }
+}

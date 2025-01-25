@@ -2,7 +2,6 @@ import * as React from "react";
 import "./Header.scss";
 import { useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useState } from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
@@ -24,8 +23,8 @@ export default function Header() {
 
   return (
     <header>
-      <div id="app-name-logo">
-        <img src="logo.png" alt="logo" onClick={handleNavigateToDashboard} />
+      <div id="app-name-logo" onClick={handleNavigateToDashboard}>
+        <img src="/logo.png" alt="logo" />
         <h3>Real-Time Stock Market</h3>
       </div>
       <Button
